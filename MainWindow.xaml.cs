@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
-using System.Drawing;
 // ------
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using Microsoft.Win32;
+using System.Drawing;
+using System.IO;
 
 namespace WorkLapse
 {
@@ -26,11 +26,16 @@ namespace WorkLapse
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private string OutDir;
+        private Properties.Settings uData;
+        private string out_directory;
+        private string out_filename;
+        private bool have_output = false;
+        private ScreenSelector screenSelect;
 
         public MainWindow()
         {
+            // load user data
+            //uData = Properties.Settings.Default;
             // initial memory and some I/O prep
             string base_out = String.Format(@"C:\Users\{0}\Videos\WorkLapse",Environment.UserName);
             DirectoryInfo di = new DirectoryInfo(base_out);
@@ -45,13 +50,13 @@ namespace WorkLapse
         {
             SaveFileDialog sfdBrowseOut = new SaveFileDialog();
             sfdBrowseOut.FileOk += sfdBrowseOut_FileOk;
-            sfdBrowseOut.AddExtension = false;
+            sfdBrowseOut.AddExtension = true;
             sfdBrowseOut.CheckFileExists = false;
             sfdBrowseOut.InitialDirectory = txtOutDir.Text;
             sfdBrowseOut.Title = @"Choose location and base name for output.";
             sfdBrowseOut.OverwritePrompt = true;
-            sfdBrowseOut.DefaultExt = "png";
-            sfdBrowseOut.Filter = "Image Sequence|.png";
+            sfdBrowseOut.DefaultExt = "jpg";
+            sfdBrowseOut.Filter = "Image Sequence|.jpg";
             sfdBrowseOut.FileName = "frames";
             sfdBrowseOut.ShowDialog();
         }
@@ -60,6 +65,20 @@ namespace WorkLapse
         {
             var sfd = (SaveFileDialog)sender;
             MessageBox.Show(sfd.FileName);
+            have_output = true;
+        }
+
+        private void Main_OnLoad(object sender, RoutedEventArgs e)
+        {
+            // test
+            screenSelect = new ScreenSelector();
+            screenSelect.Show();
+            screenSelect.Activate();
+        }
+
+        private void Main_OnClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (screenSelect != null) screenSelect.Close();
         }
     }
 }

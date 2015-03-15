@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WorkLapse.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Work Timelapse Version 0.1a - Copyright 2015 Metaverse Solutions" Height="350" Width="658" WindowStyle="ThreeDBorderWindow" Background="{x:Null}" ResizeMode="NoResize" HorizontalAlignment="Left" FontSize="16">
+        Title="Work Timelapse Version 0.1a - Copyright 2015 Metaverse Solutions" Height="350" Width="658" WindowStyle="ThreeDBorderWindow"  Background="{x:Null}" ResizeMode="NoResize" HorizontalAlignment="Left" FontSize="16" Loaded="Main_OnLoad" Closing="Main_OnClose">
     <Grid>
         <Grid.Background>
             <RadialGradientBrush>

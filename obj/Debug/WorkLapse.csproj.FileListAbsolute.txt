@@ -11,3 +11,5 @@ C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.Propertie
 C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.csproj.GenerateResource.Cache
 C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.exe
 C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.pdb
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\ScreenSelector.baml
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\ScreenSelector.g.cs

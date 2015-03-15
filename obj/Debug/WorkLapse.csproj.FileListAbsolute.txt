@@ -1,0 +1,13 @@
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\bin\Debug\WorkLapse.exe.config
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\bin\Debug\WorkLapse.exe
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\bin\Debug\WorkLapse.pdb
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.csprojResolveAssemblyReference.cache
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\MainWindow.baml
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\MainWindow.g.cs
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\App.g.cs
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse_MarkupCompile.cache
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.g.resources
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.Properties.Resources.resources
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.csproj.GenerateResource.Cache
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.exe
+C:\Users\silicon\Documents\Dev\WorkLapse\WorkLapse\obj\Debug\WorkLapse.pdb

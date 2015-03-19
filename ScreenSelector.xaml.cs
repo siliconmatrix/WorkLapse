@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+using Microsoft.Win32;
+using System.Drawing;
 
 namespace WorkLapse
 {
@@ -19,24 +23,81 @@ namespace WorkLapse
     /// </summary>
     public partial class ScreenSelector : Window
     {
+
+        public System.Windows.Point MinCorner { get; set; }
+        public System.Windows.Point MaxCorner { get; set; }
+
         public ScreenSelector()
         {
             InitializeComponent();
+            // bind closing
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Close,
+                            new ExecutedRoutedEventHandler(delegate(object sender, ExecutedRoutedEventArgs args) { this.Close(); })));
         }
 
-        Point mouse_down_pt;
-        private void Drag_OnMouseDown(object sender, MouseButtonEventArgs e)
+        bool is_held = false;
+        System.Windows.Point mouse_down_pt;
+
+        private void RecalcRegion()
         {
-            mouse_down_pt = e.GetPosition(e.Device.Target);
+            MinCorner = new System.Windows.Point(this.Left, this.Top);
+            MaxCorner = new System.Windows.Point(this.Left + this.Width, this.Top + this.Height);
         }
 
-        private void Drag_OnMouseUp(object sender, MouseButtonEventArgs e)
+        private void DisplayRegion()
         {
-            Point mup = e.GetPosition(e.Device.Target);
-            double dx = mup.X - mouse_down_pt.X;
-            double dy = mup.Y - mouse_down_pt.Y;
+            txtTitle.Text = String.Format("Region Selector <{0}> to <{1}>", MinCorner, MaxCorner);
         }
 
+        private void OnLoad(object sender, RoutedEventArgs e)
+        {
+            RecalcRegion();
+            DisplayRegion();
+            ResizeMode = ResizeMode.CanResizeWithGrip;
+        }
+
+        public void DragWindow(object sender, MouseButtonEventArgs args)
+        {
+            DragMove();
+        }
+
+        private void OnLocationChanged(object sender, EventArgs e)
+        {
+            RecalcRegion();
+            DisplayRegion();
+        }
+
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            RecalcRegion();
+            DisplayRegion();
+        }
+
+        private void OnActivated(object sender, EventArgs e)
+        {
+            ResizeMode = ResizeMode.CanResizeWithGrip;
+        }
+
+        private void btnMax_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Maximized;
+                btnMax.Content = "-";
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+                btnMax.Content = "[O]";
+            }
+        }
+
+        private void img_OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Bitmap res = new Bitmap((int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
+            Graphics g = Graphics.FromImage(res);
+            
+        }
 
     }
 }
